@@ -24,4 +24,6 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: gcdr/webapp:${{ github.sha:0:7 }}
+          tags: |
+            gcdr/webapp:latest
+            gcdr/webapp:${{ github.sha }}
