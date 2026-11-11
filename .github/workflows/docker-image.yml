@@ -4,7 +4,20 @@ on:
   push:
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+      -
+        name: Run tests
+        run: bun test
   docker:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       -

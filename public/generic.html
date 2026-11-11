@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aeris 14 — AERIS</title>
+<meta name="description" content="Configure the Aeris 14: A1 or A1 Pro chip, up to 32 GB memory and 2 TB storage. From $1,199.">
+<link rel="stylesheet" href="assets/css/landing.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="index.html">AERIS<span>.</span></a>
+    <div class="links">
+      <a href="index.html#models">Models</a>
+      <a href="index.html#why">Why AERIS</a>
+      <a href="index.html#specs">Specs</a>
+      <a href="generic.html">Aeris 14</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">☾ Dark</button>
+      <a class="btn small" href="#buy">Buy now</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap config" id="buy">
+  <div class="laptop" aria-hidden="true">
+    <svg viewBox="0 0 520 340" role="img" aria-label="Aeris 14 laptop">
+      <defs><linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a1a"/><stop offset="1" stop-color="#ff4d00"/></linearGradient></defs>
+      <rect x="70" y="28" width="380" height="248" rx="14" fill="#0b0b0c"/>
+      <rect x="82" y="40" width="356" height="224" rx="8" fill="url(#screen)"/>
+      <text x="260" y="148" text-anchor="middle" font-family="Helvetica,Arial" font-size="34" font-weight="800" fill="#ffffff" letter-spacing="6">AERIS</text>
+      <text x="260" y="176" text-anchor="middle" font-family="Helvetica,Arial" font-size="13" fill="#ffe3d3">3K OLED · 120 Hz</text>
+      <path d="M40 292 L480 292 L512 322 Q514 330 504 330 L16 330 Q6 330 8 322 Z" fill="#17171a"/>
+      <rect x="215" y="300" width="90" height="8" rx="4" fill="#2c2c31"/>
+    </svg>
+    <div class="stats" style="margin-top:28px">
+      <div class="stat"><b>1.19 kg</b><span>weight</span></div>
+      <div class="stat"><b>18 hrs</b><span>battery</span></div>
+      <div class="stat"><b>3 yrs</b><span>warranty</span></div>
+    </div>
+  </div>
+
+  <div>
+    <p class="eyebrow">Aeris 14</p>
+    <h1 style="font-size:44px">Configure yours.</h1>
+    <p class="lede" style="color:var(--muted);margin-bottom:28px">14″ 3K OLED · recycled aluminium · free shipping &amp; 30-day returns.</p>
+
+    <div class="opt-group" data-group="chip">
+      <h3>Chip</h3>
+      <div class="opts">
+        <button class="opt" data-add="0" aria-pressed="true">A1<small>10-core CPU</small></button>
+        <button class="opt" data-add="300" aria-pressed="false">A1 Pro<small>14-core CPU · +$300</small></button>
+      </div>
+    </div>
+    <div class="opt-group" data-group="ram">
+      <h3>Memory</h3>
+      <div class="opts">
+        <button class="opt" data-add="0" aria-pressed="true">16 GB<small>Included</small></button>
+        <button class="opt" data-add="200" aria-pressed="false">32 GB<small>+$200</small></button>
+      </div>
+    </div>
+    <div class="opt-group" data-group="ssd">
+      <h3>Storage</h3>
+      <div class="opts">
+        <button class="opt" data-add="0" aria-pressed="true">512 GB<small>Included</small></button>
+        <button class="opt" data-add="200" aria-pressed="false">1 TB<small>+$200</small></button>
+        <button class="opt" data-add="600" aria-pressed="false">2 TB<small>+$600</small></button>
+      </div>
+    </div>
+
+    <div class="total">
+      <span>Total<br><small style="color:var(--muted)">Ships in 3–5 days</small></span>
+      <b id="price">$1,199</b>
+    </div>
+    <p style="margin-top:20px"><button class="btn" id="buyBtn" type="button">Add to bag</button>
+    <a class="btn ghost" href="index.html">← Back to overview</a></p>
+    <p id="msg" role="status" style="margin-top:14px;color:var(--muted);font-size:14px"></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 AERIS Labs — a fictional demo brand.</span>
+    <span><a href="index.html#models">Models</a> · <a href="index.html#specs">Specs</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var base=1199, picks={chip:0,ram:0,ssd:0};
+  function render(){
+    var total=base+Object.values(picks).reduce(function(a,b){return a+b},0);
+    document.getElementById('price').textContent='$'+total.toLocaleString('en-US');
+    return total;
+  }
+  document.querySelectorAll('.opt-group').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var btn=e.target.closest('.opt'); if(!btn) return;
+      g.querySelectorAll('.opt').forEach(function(b){b.setAttribute('aria-pressed','false')});
+      btn.setAttribute('aria-pressed','true');
+      picks[g.dataset.group]=Number(btn.dataset.add)||0;
+      document.getElementById('msg').textContent='';
+      render();
+    });
+  });
+  document.getElementById('buyBtn').addEventListener('click',function(){
+    document.getElementById('msg').textContent='Added to bag — Aeris 14 at '+document.getElementById('price').textContent+'. This is a demo store, no checkout follows.';
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* AERIS — fictional laptop brand landing page. No frameworks, one file. */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+:root{--bg:#fff;--ink:#0b0b0c;--muted:#5c5c60;--line:#e7e7e9;--accent:#ff4d00;--dark:#0b0b0c;--nav:rgba(255,255,255,.92);--radius:14px;color-scheme:light}
+[data-theme="dark"]{--bg:#0b0b0c;--ink:#f4f4f5;--muted:#a7a7ad;--line:#26262a;--dark:#17171a;--nav:rgba(11,11,12,.92);color-scheme:dark}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .25s ease,color .25s ease}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--nav);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:.22em;font-size:17px;text-decoration:none}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:28px;align-items:center}
+.links a{text-decoration:none;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.links a.btn{color:var(--bg)}
+.links a.btn:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;font-size:14px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid var(--ink);cursor:pointer}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.light{background:#fff;color:#0b0b0c;border-color:#fff}
+.theme-toggle{font:inherit;font-size:14px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{color:var(--ink);border-color:var(--muted)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.small{padding:8px 16px}
+
+/* Hero */
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+h1{font-size:64px;line-height:.98;letter-spacing:-.035em;font-weight:800;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--accent)}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:480px;margin-bottom:28px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.stats{display:flex;gap:36px;border-top:1px solid var(--line);padding-top:20px}
+.stat b{display:block;font-size:22px;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* Laptop visual (pure CSS/SVG, no image files) */
+.laptop{position:relative}
+.laptop svg{width:100%;height:auto;display:block}
+.badge{position:absolute;right:6px;top:18px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:7px 11px;border-radius:999px;letter-spacing:.04em}
+
+/* Strip */
+.strip{border-block:1px solid var(--line);padding:18px 0;color:#9a9aa0;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.strip .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* Sections */
+section.block{padding:84px 0}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h2{font-size:40px;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+.sub{color:var(--muted);font-size:17px;max-width:560px;margin-bottom:44px}
+
+/* Models — editorial rows, not cards */
+.model{display:grid;grid-template-columns:1.2fr 2fr auto;gap:24px;align-items:center;padding:28px 0;border-top:1px solid var(--line)}
+.model:last-child{border-bottom:1px solid var(--line)}
+.model h3{font-size:24px;letter-spacing:-.02em}
+.model h3 small{display:block;font-size:13px;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:4px}
+.model .specs{color:var(--muted);font-size:15px}
+.model .price{text-align:right}
+.model .price b{font-size:22px;display:block}
+.model .price a{font-size:14px;font-weight:600;color:var(--accent);text-decoration:none}
+
+/* Why — numbered editorial list */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.why article{border-top:2px solid var(--ink);padding-top:18px}
+.why .num{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.1em}
+.why h3{font-size:20px;margin:10px 0 8px;letter-spacing:-.01em}
+.why p{color:var(--muted);font-size:15px}
+
+/* Dark specs */
+.dark{background:var(--dark);color:#f4f4f5}
+.dark .sub{color:#a7a7ad}
+.dark h2{color:#fff}
+.spec-table{width:100%;border-collapse:collapse;font-size:15px}
+.spec-table th,.spec-table td{text-align:left;padding:14px 12px;border-bottom:1px solid #26262a}
+.spec-table th{color:#8e8e96;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.spec-table td:first-child{color:#c9c9cf}
+
+/* Quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.quotes blockquote{font-size:18px;line-height:1.45;letter-spacing:-.01em}
+.quotes figcaption{margin-top:14px;font-size:13px;color:var(--muted);font-weight:600}
+
+/* CTA */
+.cta{background:var(--accent);color:#fff;padding:72px 0;text-align:left}
+.cta h2{color:#fff;font-size:44px}
+.cta p{opacity:.9;max-width:520px;margin-bottom:26px}
+
+/* Configurator (generic.html) */
+.config{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:56px 0 84px}
+.opt-group{margin-bottom:28px}
+.opt-group h3{font-size:14px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.opts{display:flex;gap:10px;flex-wrap:wrap}
+.opt{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 16px;cursor:pointer;font:inherit;font-size:14px;text-align:left}
+.opt small{display:block;color:var(--muted)}
+.opt[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.total{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.total b{font-size:30px;letter-spacing:-.02em}
+
+footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(max-width:860px){
+  .hero,.config{grid-template-columns:1fr}
+  h1{font-size:44px}
+  h2{font-size:32px}
+  .why,.quotes{grid-template-columns:1fr}
+  .model{grid-template-columns:1fr}
+  .model .price{text-align:left}
+  .links a:not(.btn){display:none}
+  .stats{gap:22px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body{transition:none}}
